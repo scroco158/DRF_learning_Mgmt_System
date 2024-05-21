@@ -70,7 +70,7 @@ WSGI_APPLICATION = "config.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "mailing_mgmt_serv_DB",
+        "NAME": "LMS_DB",
         "USER": "postgres",
     }
 }
@@ -115,7 +115,7 @@ STATIC_URL = "static/"
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
-AUTH_USER_MODEL = "users.User"
+# AUTH_USER_MODEL = "users.User"
 
 
 # Default primary key field type
