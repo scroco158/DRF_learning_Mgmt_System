@@ -8,6 +8,9 @@ class Course(models.Model):
     )
     description = models.TextField(blank=True, null=True, verbose_name="Описание")
 
+    def __str__(self):
+        return self.name
+
     class Meta:
         verbose_name = "Курс"
         verbose_name_plural = "Курсы"
@@ -22,6 +25,9 @@ class Lesson(models.Model):
         upload_to="lms/course_preview", blank=True, null=True, verbose_name="Превью"
     )
     url = models.CharField(max_length=200, verbose_name="Видео", blank=True, null=True)
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         verbose_name = "Урок"
