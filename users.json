@@ -1,0 +1,166 @@
+[
+  {
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$jyNpBR9Xd2eRB0GeNphDO6$XeFE2S1jNhLWCZMVAMBeMYBFLyhMvFav59eix2uhxdU=",
+      "last_login": "2024-05-24T20:04:50.509Z",
+      "is_superuser": true,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2024-05-24T19:47:22.323Z",
+      "email": "admin@admin.ru",
+      "phone": null,
+      "city": null,
+      "avatar": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.payment",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "amount": 300,
+      "p_date": "2024-05-24",
+      "course": 1,
+      "lesson": null,
+      "method": "MONEY"
+    }
+  },
+  {
+    "model": "users.payment",
+    "pk": 2,
+    "fields": {
+      "user": 1,
+      "amount": 100,
+      "p_date": "2024-05-24",
+      "course": null,
+      "lesson": 2,
+      "method": "BANK"
+    }
+  },
+  {
+    "model": "users.payment",
+    "pk": 3,
+    "fields": {
+      "user": 1,
+      "amount": 100,
+      "p_date": "2024-05-24",
+      "course": null,
+      "lesson": 3,
+      "method": "MONEY"
+    }
+  },
+  {
+    "model": "users.payment",
+    "pk": 4,
+    "fields": {
+      "user": 1,
+      "amount": 100,
+      "p_date": "2024-05-24",
+      "course": null,
+      "lesson": 1,
+      "method": "BANK"
+    }
+  },
+  {
+    "model": "users.payment",
+    "pk": 5,
+    "fields": {
+      "user": 1,
+      "amount": 600,
+      "p_date": "2024-05-26",
+      "course": 2,
+      "lesson": null,
+      "method": "BANK"
+    }
+  },
+  {
+    "model": "users.payment",
+    "pk": 6,
+    "fields": {
+      "user": 1,
+      "amount": 200,
+      "p_date": "2024-05-26",
+      "course": null,
+      "lesson": 5,
+      "method": "MONEY"
+    }
+  },
+  {
+    "model": "users.payment",
+    "pk": 7,
+    "fields": {
+      "user": 1,
+      "amount": 200,
+      "p_date": "2024-05-26",
+      "course": null,
+      "lesson": 6,
+      "method": "MONEY"
+    }
+  },
+  {
+    "model": "users.payment",
+    "pk": 8,
+    "fields": {
+      "user": 1,
+      "amount": 200,
+      "p_date": "2024-05-26",
+      "course": null,
+      "lesson": 4,
+      "method": "MONEY"
+    }
+  },
+  {
+    "model": "users.payment",
+    "pk": 9,
+    "fields": {
+      "user": 1,
+      "amount": 900,
+      "p_date": "2024-05-25",
+      "course": 3,
+      "lesson": null,
+      "method": "BANK"
+    }
+  },
+  {
+    "model": "users.payment",
+    "pk": 10,
+    "fields": {
+      "user": 1,
+      "amount": 300,
+      "p_date": "2024-05-25",
+      "course": null,
+      "lesson": 7,
+      "method": "BANK"
+    }
+  },
+  {
+    "model": "users.payment",
+    "pk": 11,
+    "fields": {
+      "user": 1,
+      "amount": 300,
+      "p_date": "2024-05-25",
+      "course": null,
+      "lesson": 9,
+      "method": "BANK"
+    }
+  },
+  {
+    "model": "users.payment",
+    "pk": 12,
+    "fields": {
+      "user": 1,
+      "amount": 300,
+      "p_date": "2024-05-25",
+      "course": null,
+      "lesson": 8,
+      "method": "MONEY"
+    }
+  }
+]
