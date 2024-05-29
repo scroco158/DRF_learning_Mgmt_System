@@ -17,8 +17,8 @@ router.register("", CourseViewSet)
 
 
 urlpatterns = [
-    path('login/', TokenObtainPairView.as_view(permission_clasess=(AllowAny)), name='login'),
-    path('token/refresh/', TokenRefreshView.as_view(permission_clasess=(AllowAny)), name='token_refresh'),
+    path('login/', TokenObtainPairView.as_view(permission_classes = (AllowAny,)), name='login'),
+    path('token/refresh/', TokenRefreshView.as_view(permission_classes = (AllowAny,)), name='token_refresh'),
 
     path('users/', UserListAPIView.as_view(), name='user-list'),
     path('users/<int:pk>', UserRetrieveAPIView.as_view(), name='user-detail'),
