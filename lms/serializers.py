@@ -12,7 +12,7 @@ class LessonSerializer(ModelSerializer):
 
 class CourseSerializer(ModelSerializer):
     # перечень лекций текущего курса
-    lessons = LessonSerializer(source='lesson_set', many=True)
+    lessons = LessonSerializer(source='lesson_set', many=True, read_only=True)
     # количество лекций текущего курса
     lessons_count = serializers.SerializerMethodField()
 
@@ -22,7 +22,7 @@ class CourseSerializer(ModelSerializer):
 
     class Meta:
         model = Course
-        fields = ('pk', 'name', 'description', 'lessons_count', 'lessons')
+        fields = ('pk', 'name', 'description', 'lessons_count', 'lessons', 'owner')
 
 
 class CourseDetailSerializer(ModelSerializer):
