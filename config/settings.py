@@ -1,3 +1,4 @@
+from datetime import timedelta
 from pathlib import Path
 
 import os
@@ -33,6 +34,7 @@ INSTALLED_APPS = [
 
     "rest_framework",
     "django_filters",
+    "rest_framework_simplejwt",
 
     "users",
     "lms"
@@ -136,3 +138,8 @@ AUTH_USER_MODEL = "users.User"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=5),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+}
