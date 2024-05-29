@@ -1,5 +1,8 @@
 from django.db import models
 
+# для избежания циклической ссылки далее используем вместо User в ForeignKey
+from config.settings import AUTH_USER_MODEL
+
 
 class Course(models.Model):
     name = models.CharField(max_length=100, unique=True, verbose_name="Название курса")
@@ -7,6 +10,12 @@ class Course(models.Model):
         upload_to="lms/course_preview", blank=True, null=True, verbose_name="Превью"
     )
     description = models.TextField(blank=True, null=True, verbose_name="Описание")
+
+    owner = models.ForeignKey(
+        AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True, verbose_name="Владелец", help_text="Укажите автора"
+    )
+
+
 
     def __str__(self):
         return self.name
@@ -25,6 +34,10 @@ class Lesson(models.Model):
         upload_to="lms/course_preview", blank=True, null=True, verbose_name="Превью"
     )
     url = models.CharField(max_length=200, verbose_name="Видео", blank=True, null=True)
+
+    owner = models.ForeignKey(
+        AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True, verbose_name="Владелец", help_text="Укажите автора"
+    )
 
     def __str__(self):
         return self.name
