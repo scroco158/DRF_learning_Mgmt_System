@@ -35,7 +35,7 @@ class CourseViewSet(ModelViewSet):
         # добавление проверки, что владелец работает только со своими курсами и лекциями
         if self.action == 'create':                         # если создание
             self.permission_classes = [~IsModer]            # то инверсия IsModer (не модератор)
-        elif self.action in ['update', 'retrive']:          # если редактирование или просмотр
+        elif self.action in ['update', 'retrieve']:          # если редактирование или просмотр
             self.permission_classes = [IsModer | IsOwner]   # то IsModer или IsOwner
         elif self.action == 'destroy':                      # если создание или удаление
             self.permission_classes = [~IsModer | IsOwner]  # то не IsModer или IsOwner
