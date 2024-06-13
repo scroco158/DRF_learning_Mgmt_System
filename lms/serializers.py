@@ -2,7 +2,7 @@ from django.core.validators import URLValidator
 from rest_framework import serializers
 from rest_framework.serializers import ModelSerializer
 
-from lms.models import Course, Lesson
+from lms.models import Course, Lesson, Subscription
 from lms.validators import validate_youtube_url
 
 
@@ -43,3 +43,7 @@ class CourseDetailSerializer(ModelSerializer):
         fields = ('name', 'description', 'lesson_quantity')
 
 
+class SubscriptionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Subscription
+        fields = '__all__'
