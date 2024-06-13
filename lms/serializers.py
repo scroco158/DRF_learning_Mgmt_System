@@ -1,10 +1,15 @@
+from django.core.validators import URLValidator
 from rest_framework import serializers
 from rest_framework.serializers import ModelSerializer
 
 from lms.models import Course, Lesson
+from lms.validators import validate_youtube_url
 
 
 class LessonSerializer(ModelSerializer):
+    # Использую валидатор для проверки адреса видео урока
+    url = serializers.CharField(validators=[validate_youtube_url])
+
     class Meta:
         model = Lesson
         fields = '__all__'
