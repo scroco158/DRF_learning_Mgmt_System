@@ -20,14 +20,20 @@ class CourseSerializer(ModelSerializer):
     lessons = LessonSerializer(source='lesson_set', many=True, read_only=True)
     # количество лекций текущего курса
     lessons_count = serializers.SerializerMethodField()
+    have_subscription = serializers.SerializerMethodField()
 
     def get_lessons_count(self, obj):
         """Определяет переменную lessons_count"""
         return obj.lesson_set.count()
 
+    def get_have_subscription(self, instance):
+        """ Проверяет есть ли подписка на курс у текущего пользователя"""
+        user = self.context['request'].user
+        return Subscription.objects.all().filter(user=user).filter(course=instance).exists()
+
     class Meta:
         model = Course
-        fields = ('pk', 'name', 'description', 'lessons_count', 'lessons', 'owner')
+        fields = ('pk', 'name', 'description', 'owner', 'have_subscription', 'lessons_count', 'lessons')
 
 
 class CourseDetailSerializer(ModelSerializer):
