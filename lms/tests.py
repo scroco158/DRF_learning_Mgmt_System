@@ -29,7 +29,8 @@ class LessonTestCase(APITestCase):
     def test_lesson_create(self):
         url = reverse("lms:lesson-create")
         data = {
-            "name": "Lesson_2"
+            "name": "Lesson_2",
+            "url": "url youtube"
         }
         response = self.client.post(url, data)
         self.assertEqual(
@@ -37,4 +38,55 @@ class LessonTestCase(APITestCase):
         )
         self.assertEqual(
             Lesson.objects.all().count(), 2
+        )
+
+    def test_lesson_update(self):
+        url = reverse("lms:lesson-update", args=(self.lesson.pk,))
+        data = {
+            "name": "Lesson_2"
+        }
+        response = self.client.patch(url, data)
+        data = response.json()
+        self.assertEqual(
+            response.status_code, status.HTTP_200_OK
+        )
+        self.assertEqual(
+            data.get("name"), "Lesson_2"
+        )
+
+    def test_lesson_delete(self):
+        url = reverse("lms:lesson-destroy", args=(self.lesson.pk,))
+        response = self.client.delete(url)
+        self.assertEqual(
+            response.status_code, status.HTTP_204_NO_CONTENT
+        )
+        self.assertEqual(
+            Lesson.objects.all().count(), 0
+        )
+
+    def test_lesson_list(self):
+        url = reverse("lms:lesson-list")
+        response = self.client.get(url)
+        data = response.json()
+        self.assertEqual(
+            response.status_code, status.HTTP_200_OK
+        )
+        result = {
+            "count": 1,
+            "next": None,
+            "previous": None,
+            "results": [
+                {
+                    "id": self.lesson.pk,
+                    "name": self.lesson.name,
+                    "description": self.lesson.description,
+                    "picture": None,
+                    "url": self.lesson.url,
+                    "course": self.course.pk,
+                    "owner": self.user.pk
+                }
+            ]
+        }
+        self.assertEqual(
+            data, result
         )
